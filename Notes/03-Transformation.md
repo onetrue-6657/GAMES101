@@ -28,10 +28,10 @@
 
 We have an example of $s = 0.5$ (Scaling the image to 0.5x of its original.)
 
-``` math
+$$
 x' = sx \\
 y' = sy
-```
+$$
 
 We can turn this to a matrix computation.
 
@@ -41,16 +41,16 @@ We can turn this to a matrix computation.
 \begin{bmatrix} x \\\ y \end{bmatrix}
 ```
 
-$ \begin{bmatrix} s*{x} & 0 \\ 0 & s*{y} \end{bmatrix} $ is the scaling matrix (缩放矩阵). $x$ and $y$ can scale unevenly (i.e. $s_{x} = 0.5, s_{y} = 1.0$)
+$` \begin{bmatrix} s*{x} & 0 \\ 0 & s*{y} \end{bmatrix} `$ is the scaling matrix (缩放矩阵). $x$ and $y$ can scale unevenly (i.e. $s_{x} = 0.5, s_{y} = 1.0$)
 
 ### **Reflection**
 
 Horizontal reflection:
 
-``` math
+$$
 x' = -x \\
 y' = y
-```
+$$
 
 We can get a general form of matrix operation here:
 
@@ -127,10 +127,10 @@ These are all linear transforms of the same dimension, involving with simple lin
 
 Translating a shape or points from one place to another. We can get the general form of translation formula:
 
-``` math
+$$
 x' = x + t_{x} \\
 y' = y + t_{y}
-```
+$$
 
 Translation cannot be directly represented in matrix form. It is not a linear transform! We need to add an extra matrix after the multiplication operation.
 
@@ -163,8 +163,8 @@ Valid operation if w-coordinate of result is 1 or 0:
 - point + vector = point
 - point + point = midpoint
 
-In homogeneous coordinates, $\begin{pmatrix} x \\ y \\ w \end{pmatrix}$
-is the 2D point $\begin{pmatrix} x / w \\ y / w \\ 1 \end{pmatrix}$,
+In homogeneous coordinates, $`\begin{pmatrix} x \\ y \\ w \end{pmatrix}`$
+is the 2D point $`\begin{pmatrix} x / w \\ y / w \\ 1 \end{pmatrix}`$,
 $w \neq 0$.
 
 **Affine Transformations:**
