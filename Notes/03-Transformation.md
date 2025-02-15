@@ -29,8 +29,7 @@
 We have an example of $s = 0.5$ (Scaling the image to 0.5x of its original.)
 
 $$
-x' = sx \\
-y' = sy
+\begin{matrix} x' = sx \\ y' = sy \end{matrix}
 $$
 
 We can turn this to a matrix computation.
@@ -47,10 +46,9 @@ $` \begin{bmatrix} s*{x} & 0 \\ 0 & s*{y} \end{bmatrix} `$ is the scaling matrix
 
 Horizontal reflection:
 
-$$
-x' = -x \\
-y' = y
-$$
+``` math
+\begin{matrix} x' = -x \\ y' = y \end{matrix}
+```
 
 We can get a general form of matrix operation here:
 
@@ -128,8 +126,7 @@ These are all linear transforms of the same dimension, involving with simple lin
 Translating a shape or points from one place to another. We can get the general form of translation formula:
 
 $$
-x' = x + t_{x} \\
-y' = y + t_{y}
+\begin{matrix} x' = x + t_{x} \\ y' = y + t_{y} \end{matrix}
 $$
 
 Translation cannot be directly represented in matrix form. It is not a linear transform! We need to add an extra matrix after the multiplication operation.
