@@ -28,13 +28,13 @@
 
 We have an example of $s = 0.5$ (Scaling the image to 0.5x of its original.)
 
-$$x' = sx \\ y' = sy$$
+$$x' = sx \\\ y' = sy$$
 
 We can turn this to a matrix computation.
 
-$$\begin{bmatrix} x' \\ y' \end{bmatrix}
-= \begin{bmatrix} s_{x} & 0 \\ 0 & s_{y} \end{bmatrix}
-\begin{bmatrix} x \\ y \end{bmatrix}$$
+$$\begin{bmatrix} x' \\\ y' \end{bmatrix}
+= \begin{bmatrix} s_{x} & 0 \\\ 0 & s_{y} \end{bmatrix}
+\begin{bmatrix} x \\\ y \end{bmatrix}$$
 
 $ \begin{bmatrix} s*{x} & 0 \\ 0 & s*{y} \end{bmatrix} $ is the scaling matrix (缩放矩阵). $x$ and $y$ can scale unevenly (i.e. $s_{x} = 0.5, s_{y} = 1.0$)
 
@@ -235,3 +235,17 @@ g & h & i & t_{z} \\ 0 & 0 & 0 & 1 \end{pmatrix} \cdot
 Is the order Linear Transform first or Translation first?
 
 - It will be linear map + translation (the same as 2D).
+
+## **Supplement**
+
+$$
+R_{-\theta} =
+\begin{pmatrix} cos\theta & sin\theta \\ -sin\theta & cos\theta \end{pmatrix}
+= R_{\theta}^T
+$$
+
+$$
+R_{-\theta} = R_{\theta}^{-1}
+$$
+
+The later one is by definition.
