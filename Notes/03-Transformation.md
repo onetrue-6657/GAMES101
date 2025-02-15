@@ -29,7 +29,7 @@
 We have an example of $s = 0.5$ (Scaling the image to 0.5x of its original.)
 
 ``` math
-x' = sx \\\ y' = sy
+x' = sx \\\\ y' = sy
 ```
 
 We can turn this to a matrix computation.
@@ -47,7 +47,7 @@ $ \begin{bmatrix} s*{x} & 0 \\ 0 & s*{y} \end{bmatrix} $ is the scaling matrix (
 Horizontal reflection:
 
 ``` math
-x' = -x \\ y' = y
+x' = -x \\\\ y' = y
 ```
 
 We can get a general form of matrix operation here:
@@ -104,13 +104,13 @@ Similarly, we can compute the complete formula.
 We can get a general form:
 
 ``` math
-x' = ax + by \\
+x' = ax + by
 ```
 
 ``` math
 \begin{bmatrix} x' \\ y' \end{bmatrix} =
 \begin{bmatrix} a & b \\ c & d \end{bmatrix}
-\begin{bmatrix} x \\ y \end{bmatrix} \\
+\begin{bmatrix} x \\ y \end{bmatrix}
 ```
 
 ``` math
@@ -126,7 +126,7 @@ These are all linear transforms of the same dimension, involving with simple lin
 Translating a shape or points from one place to another. We can get the general form of translation formula:
 
 ``` math
-x' = x + t_{x} \\ y' = y + t_{y}
+x' = x + t_{x} \\\\ y' = y + t_{y}
 ```
 
 Translation cannot be directly represented in matrix form. It is not a linear transform! We need to add an extra matrix after the multiplication operation.
@@ -223,7 +223,7 @@ is the inverse of transform $M$ in both a matrix and geometric sense.
 The order of transformation matters! Translate then rotate makes a different outcome from rotate then translate! (Essentially the same theory as matrix multiplication.)
 
 ``` math
-$R_{45} \cdot T_{(1, 0)} \neq T_{(1, 0)} \cdot R_{45}
+R_{45} \cdot T_{(1, 0)} \neq T_{(1, 0)} \cdot R_{45}
 ```
 
 Note: Matrices are applied right to left.
