@@ -292,7 +292,7 @@ n
 x \\
 y \\
 n \\
-1 \\
+1
 \end{pmatrix}
 = n^2
 \Rightarrow
