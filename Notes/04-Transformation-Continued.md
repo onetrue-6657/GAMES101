@@ -140,8 +140,7 @@ How to perform view transformation?
 T_{view} = \begin{bmatrix} 1 & 0 & 0 & -x_{e} \\ 0 & 1 & 0 & -y_{e} \\ 0 & 0 & 1 & -z_{e} \\ 0 & 0 & 0 & 1 \end{bmatrix}
 ```
 
-- Rotate g to -Z, t to Y, (g x t) to X.
-- What about its inverse rotation?
+- Rotate g to -Z, t to Y, (g x t) to X. What about its inverse rotation?
 
 ``` math
 R_{\text{view}}^{-1} = \begin{bmatrix} x_{\hat{g} \times \hat{t}} & x_t & x - g & 0 \\ y_{\hat{g} \times \hat{t}} & y_t & y - g & 0 \\ z_{\hat{g} \times \hat{t}} & z_t & z - g & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
@@ -151,9 +150,7 @@ R_{\text{view}}^{-1} = \begin{bmatrix} x_{\hat{g} \times \hat{t}} & x_t & x - g 
 R_{\text{view}} = \begin{bmatrix} x_{\hat{g} \times \hat{t}} & y_{\hat{g} \times \hat{t}} & z_{\hat{g} \times \hat{t}} & 0 \\ x_t & y_t & z_t & 0 \\ x - g & y - g & z - g & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
 ```
 
-- Tranform objects together with the camera.
-- Until camera is at the origin, up at Y, look at -Z.
-- Also known as ModelView Transformation.
+- Tranform objects together with the camera. Until camera is at the origin, up at Y, look at -Z. Also known as ModelView Transformation.
 
 ### **Projection Transformation**
 
@@ -178,9 +175,9 @@ Projection in Computer Graphics
 - Transformation matrix:
   - Translate (center to origin) first, then scale (legnth/width/height to 2)
 
-  ``` math
-  M_{\text{ortho}} = \begin{bmatrix} \frac{2}{r - l} & 0 & 0 & 0 \\ 0 & \frac{2}{t - b} & 0 & 0 \\ 0 & 0 & \frac{2}{n - f} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 & 0 & -\frac{r + l}{2} \\ 0 & 1 & 0 & -\frac{t + b}{2} \\ 0 & 0 & 1 & -\frac{n + f}{2} \\ 0 & 0 & 0 & 1 \end{bmatrix}
-  ```
+``` math
+M_{\text{ortho}} = \begin{bmatrix} \frac{2}{r - l} & 0 & 0 & 0 \\ 0 & \frac{2}{t - b} & 0 & 0 \\ 0 & 0 & \frac{2}{n - f} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 & 0 & -\frac{r + l}{2} \\ 0 & 1 & 0 & -\frac{t + b}{2} \\ 0 & 0 & 1 & -\frac{n + f}{2} \\ 0 & 0 & 0 & 1 \end{bmatrix}
+```
 
 - Caveat
   - Looking at / along -Z is making near and far not intuitive (n > f).
@@ -199,54 +196,54 @@ Projection in Computer Graphics
 - In order to find a transformation:
   - Recall: Find the relationship between transformed points (x', y', z') and the original points (x, y, z).
 
-    ``` math
-    \begin{matrix} y' = \frac{n}{z}y \\ x' = \frac{n}{z}x \end{matrix}
-    ```
+``` math
+\begin{matrix} y' = \frac{n}{z}y \\ x' = \frac{n}{z}x \end{matrix}
+```
 
-  - This is the scaling of a similar triangles.
-  - In homogeneous coordinates,
+- This is the scaling of a similar triangles.
+- In homogeneous coordinates,
 
-    ```math
-    \begin{pmatrix}
-    x \\
-    y \\
-    z \\
-    1
-    \end{pmatrix}
-    \Rightarrow
-    \begin{pmatrix}
-    \frac{n x}{z} \\
-    \frac{n y}{z} \\
-    \text{unknown} \\
-    1
-    \end{pmatrix}
-    \xRightarrow{\text{mult. by z}}
-    \begin{pmatrix}
-    n x \\
-    n y \\
-    \text{still unknown} \\
-    z
-    \end{pmatrix}
-    ```
+```math
+\begin{pmatrix}
+x \\
+y \\
+z \\
+1
+\end{pmatrix}
+\Rightarrow
+\begin{pmatrix}
+\frac{n x}{z} \\
+\frac{n y}{z} \\
+\text{unknown} \\
+1
+\end{pmatrix}
+\xRightarrow{\text{mult. by z}}
+\begin{pmatrix}
+n x \\
+n y \\
+\text{still unknown} \\
+z
+\end{pmatrix}
+```
 
-  - So the "squish" (perspective to orthogonal) projection does this:
+- So the "squish" (perspective to orthogonal) projection does this:
 
-    ``` math
-    M_{\text{persp} \to \text{ortho}}^{(4 \times 4)}
-    \begin{pmatrix}
-    x \\
-    y \\
-    z \\
-    1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-    n x \\
-    n y \\
-    \text{unknown} \\
-    z
-    \end{pmatrix}
-    ```
+``` math
+M_{\text{persp} \to \text{ortho}}^{(4 \times 4)}
+\begin{pmatrix}
+x \\
+y \\
+z \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+n x \\
+n y \\
+\text{unknown} \\
+z
+\end{pmatrix}
+```
 
 - Find the third row,
   - Observation: The third row is responsible for z'.
@@ -254,59 +251,59 @@ Projection in Computer Graphics
     - Any point's z on the far plane will not change.
   - Any point on the near plane will not change,
 
-  ``` math
-    M_{\text{persp} \to \text{ortho}}^{(4 \times 4)}
-    \begin{pmatrix}
-    x \\
-    y \\
-    z \\
-    1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-    n x \\
-    n y \\
-    \text{unknown} \\
-    z
-    \end{pmatrix}
-    \xRightarrow{\text{replace z with n}}
-    \begin{pmatrix}
-    x \\
-    y \\
-    n \\
-    1
-    \end{pmatrix}
-    \equiv
-    \begin{pmatrix}
-    n x \\
-    n y \\
-    n^2 \\
-    n
-    \end{pmatrix}
-    ```
+``` math
+M_{\text{persp} \to \text{ortho}}^{(4 \times 4)}
+\begin{pmatrix}
+x \\
+y \\
+z \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+n x \\
+n y \\
+\text{unknown} \\
+z
+\end{pmatrix}
+\xRightarrow{\text{replace z with n}}
+\begin{pmatrix}
+x \\
+y \\
+n \\
+1
+\end{pmatrix}
+\equiv
+\begin{pmatrix}
+n x \\
+n y \\
+n^2 \\
+n
+\end{pmatrix}
+```
 
-  - So the third row must be of the form (0 0 A B),
+- So the third row must be of the form (0 0 A B),
 
-  ``` math
-  \begin{pmatrix}
-  0 & 0 & A & B
-  \end{pmatrix}
-  \begin{pmatrix}
-  x \\
-  y \\
-  n \\
-  1 \\
-  \end{pmatrix}
-  = n^2
-  \Rightarrow
-  An + B = n^2
-  ```
+``` math
+\begin{pmatrix}
+0 & 0 & A & B
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+n \\
+1 \\
+\end{pmatrix}
+= n^2
+\Rightarrow
+An + B = n^2
+```
 
-  - Any point's z on the far plane will not change.
+- Any point's z on the far plane will not change.
 
-  ``` math
-  Af + B = f^2
-  ```
+``` math
+Af + B = f^2
+```
 
 - Solve for A and B,
 
