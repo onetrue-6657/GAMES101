@@ -137,35 +137,18 @@ How to perform view transformation?
   - Translate e to origin.
 
   ``` math
-  T_{view} = 
-  \begin{bmatrix} 1 & 0 & 0 & -x_{e} \\
-    0 & 1 & 0 & -y_{e} \\
-    0 & 0 & 1 & -z_{e} \\
-    0 & 0 & 0 & 1
-    \end{bmatrix}
+  T_{view} = \begin{bmatrix} 1 & 0 & 0 & -x_{e} \\ 0 & 1 & 0 & -y_{e} \\ 0 & 0 & 1 & -z_{e} \\ 0 & 0 & 0 & 1 \end{bmatrix}
   ```
 
   - Rotate g to -Z, t to Y, (g x t) to X.
   - What about its inverse rotation?
 
   ``` math
-  R_{\text{view}}^{-1} =
-  \begin{bmatrix}
-  x_{\hat{g} \times \hat{t}} & x_t & x - g & 0 \\
-  y_{\hat{g} \times \hat{t}} & y_t & y - g & 0 \\
-  z_{\hat{g} \times \hat{t}} & z_t & z - g & 0 \\
-  0 & 0 & 0 & 1
-  \end{bmatrix}
+  R_{\text{view}}^{-1} = \begin{bmatrix} x_{\hat{g} \times \hat{t}} & x_t & x - g & 0 \\ y_{\hat{g} \times \hat{t}} & y_t & y - g & 0 \\ z_{\hat{g} \times \hat{t}} & z_t & z - g & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
   ```
 
   ``` math
-  R_{\text{view}} =
-  \begin{bmatrix}
-  x_{\hat{g} \times \hat{t}} & y_{\hat{g} \times \hat{t}} & z_{\hat{g} \times \hat{t}} & 0 \\
-  x_t & y_t & z_t & 0 \\
-  x - g & y - g & z - g & 0 \\
-  0 & 0 & 0 & 1
-  \end{bmatrix}
+  R_{\text{view}} = \begin{bmatrix} x_{\hat{g} \times \hat{t}} & y_{\hat{g} \times \hat{t}} & z_{\hat{g} \times \hat{t}} & 0 \\ x_t & y_t & z_t & 0 \\ x - g & y - g & z - g & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
   ```
 
 - Tranform objects together with the camera.
@@ -196,19 +179,7 @@ Projection in Computer Graphics
   - Translate (center to origin) first, then scale (legnth/width/height to 2)
 
   ``` math
-  M_{\text{ortho}} =
-  \begin{bmatrix}
-  \frac{2}{r - l} & 0 & 0 & 0 \\
-  0 & \frac{2}{t - b} & 0 & 0 \\
-  0 & 0 & \frac{2}{n - f} & 0 \\
-  0 & 0 & 0 & 1
-  \end{bmatrix}
-  \begin{bmatrix}
-  1 & 0 & 0 & -\frac{r + l}{2} \\
-  0 & 1 & 0 & -\frac{t + b}{2} \\
-  0 & 0 & 1 & -\frac{n + f}{2} \\
-  0 & 0 & 0 & 1
-  \end{bmatrix}
+  M_{\text{ortho}} = \begin{bmatrix} \frac{2}{r - l} & 0 & 0 & 0 \\ 0 & \frac{2}{t - b} & 0 & 0 \\ 0 & 0 & \frac{2}{n - f} & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 & 0 & -\frac{r + l}{2} \\ 0 & 1 & 0 & -\frac{t + b}{2} \\ 0 & 0 & 1 & -\frac{n + f}{2} \\ 0 & 0 & 0 & 1 \end{bmatrix}
   ```
 
 - Caveat
