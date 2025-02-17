@@ -283,7 +283,7 @@ Projection in Computer Graphics
     - Any point's z on the far plane will not change.
   - Any point on the near plane will not change,
 
-  ```math
+  ``` math
     M_{\text{persp} \to \text{ortho}}^{(4 \times 4)}
     \begin{pmatrix}
     x \\
@@ -316,7 +316,7 @@ Projection in Computer Graphics
 
   - So the third row must be of the form (0 0 A B),
 
-  ```math
+  ``` math
   \begin{pmatrix}
   0 & 0 & A & B
   \end{pmatrix}
@@ -333,13 +333,13 @@ Projection in Computer Graphics
 
   - Any point's z on the far plane will not change.
 
-  ```math
+  ``` math
   Af + B = f^2
   ```
 
 - Solve for A and B,
 
-```math
+``` math
 \begin{matrix} A = n + f \\ B = -nf \end{matrix}
 ```
 
